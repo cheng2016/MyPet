@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/widget_size_10"
+        android:layout_marginRight="@dimen/widget_size_10"
+        android:layout_marginBottom="@dimen/widget_size_10"
+        android:background="@drawable/plan_shape">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="15dp"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/widget_size_16" />
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/widget_size_40"
+            android:layout_below="@+id/title_tv"
+            android:layout_alignLeft="@+id/title_tv"
+            android:layout_marginTop="@dimen/widget_size_8"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/widget_size_3"
+            android:maxLines="2"
+            android:text="您有新的预约订单，请及时处理～！还有一段文字的时候换行，就像现在这样。"
+            android:textColor="@color/disable_text"
+            android:textSize="@dimen/widget_size_14" />
+
+
+        <TextView
+            android:id="@+id/detail_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/widget_size_14"
+            android:layout_marginEnd="@dimen/widget_size_14"
+            android:layout_marginRight="@dimen/widget_size_14"
+            android:text="点击查看"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/widget_size_16" />
+
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content_tv"
+            android:layout_alignRight="@+id/detail_tv"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/widget_size_6"
+            android:layout_marginRight="@dimen/widget_size_14"
+            android:layout_marginBottom="@dimen/widget_size_8"
+            android:text="2018-06-27 17:41"
+            android:textColor="@color/enable_color"
+            android:textSize="@dimen/widget_size_14" />
+    </RelativeLayout>
+</RelativeLayout>

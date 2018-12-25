@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_content_bg"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/action_bar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cheng.refresh.library.ReboundScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/widget_size_10"
+                android:background="@drawable/plan_shape"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_60"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/pet_img"
+                        android:layout_width="@dimen/widget_size_60"
+                        android:layout_height="@dimen/widget_size_60"
+                        android:layout_marginLeft="@dimen/widget_size_8"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/pet_homepageportraits" />
+
+
+                    <TextView
+                        android:id="@+id/pet_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/widget_size_80"
+                        android:layout_marginTop="@dimen/widget_size_6"
+                        android:gravity="center_vertical"
+                        android:text="铲屎官的宝贝"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_16" />
+
+
+                    <TextView
+                        android:id="@+id/pet_varieties"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pet_nickname"
+                        android:layout_alignLeft="@+id/pet_nickname"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:text="边境牧羊犬"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/state_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:layout_marginRight="@dimen/widget_size_10"
+                        android:text="预约已取消"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+
+                <com.zhy.view.flowlayout.TagFlowLayout xmlns:zhy="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/flow_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/widget_size_12"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:layout_marginRight="@dimen/widget_size_12"
+                    zhy:max_select="-1" />
+
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/widget_size_12"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:layout_marginRight="@dimen/widget_size_12"
+                    android:gravity="center_vertical"
+                    android:text="这是已经填写好的具体的宠物疾病症状，字数在五十个字以内。这是已经填写好的具体的宠物疾病症状，字数在五十个字以内。"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_14" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_min_size_1"
+                    android:layout_marginLeft="@dimen/widget_size_10"
+                    android:layout_marginTop="@dimen/widget_size_14"
+                    android:layout_marginRight="@dimen/widget_size_10"
+                    android:background="@color/splite_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_14"
+                    android:layout_marginBottom="@dimen/widget_size_14"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/widget_size_76"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/widget_size_12"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="预约号"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="创建时间"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="联系人"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="联系电话"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/widget_size_40"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="上门地址"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="预约时间"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="出诊费"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="支付时间"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="支付方式"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/widget_size_20"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/order_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="预约号"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/create_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="2018.12.03  09:30"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/contact_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="婊子李"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/contact_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="1388005438"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/widget_size_40"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:lineSpacingExtra="@dimen/widget_size_5"
+                            android:maxLines="2"
+                            android:text="广东省深圳市福田区泰然九路11号海松大厦B座906室"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/reservation_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="2018.12.03  09:30"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="¥168.00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/pay_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="2018.12.03  09:30"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                        <TextView
+                            android:id="@+id/pay_way"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="微信支付"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.cheng.refresh.library.ReboundScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_min_size_2"
+                android:layout_gravity="bottom"
+                android:background="@color/splite_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_size_50"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/transfer"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/widget_size_4"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="转交客服分诊"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/font_size_18"
+                        android:visibility="visible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/confirm"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_button">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/confirm_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawablePadding="@dimen/widget_size_4"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="确认接单"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_18"
+                        android:visibility="visible" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

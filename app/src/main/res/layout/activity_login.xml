@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".module.login.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_118"
+        android:layout_marginLeft="@dimen/widget_size_60"
+        android:layout_marginRight="@dimen/widget_size_60"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/logo_img"
+            android:layout_width="@dimen/widget_size_75"
+            android:layout_height="@dimen/widget_size_75"
+            android:src="@mipmap/logo_login" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_45"
+            android:layout_marginTop="@dimen/widget_size_30"
+            android:background="@null"
+            android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:ems="13"
+            android:gravity="center"
+            android:hint="@string/prompt_account"
+            android:inputType="text"
+            android:maxLength="18"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/widget_size_5"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/splite_line" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_min_size_1"
+            android:background="@color/splite_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_45"
+            android:layout_marginTop="@dimen/widget_size_8">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_size_45"
+                android:background="@null"
+                android:ems="30"
+                android:gravity="center"
+                android:hint="@string/prompt_password"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/widget_size_5"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/splite_line" />
+
+            <CheckBox
+                android:id="@+id/show_password_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/widget_size_10"
+                android:background="@drawable/password_white_show_selector"
+                android:button="@null"
+                android:text="" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_min_size_1"
+            android:background="@color/splite_line" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_48"
+            android:layout_marginTop="@dimen/widget_size_30"
+            android:background="@drawable/shape_login_button"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_16" />
+    </LinearLayout>
+</FrameLayout>

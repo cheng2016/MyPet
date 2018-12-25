@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+greendao {
+    //数据库的schema版本，也可以理解为数据库版本号
+    schemaVersion 3
+    //设置DaoMaster、DaoSession、Dao包名，也就是要放置这些类的包的全路径。
+    daoPackage 'com.cds.pet.data.source.local.greendao'
+    //设置DaoMaster、DaoSession、Dao目录
+    targetGenDir 'src/main/java'
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    google()
+}
+
+def getTime() {
+    return new java.text.SimpleDateFormat("yyyyMMddHHmm").format(new Date())
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.cds.pet"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0${getTime()}"
+        multiDexEnabled true
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('pet.jks')
+            storePassword 'pet20181212'
+            keyAlias 'pet'
+            keyPassword 'pet20181212'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all {
+                variant ->
+                    variant.outputs.all {
+                        output ->
+                            def outputFile = output.outputFile
+                            if (outputFile.name.contains("release")) {
+                                outputFileName = new File("../release/","Pet_v${versionName}.apk")
+                            }
+                    }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    final SUPPORT_VERSION = '28.0.0'
+    implementation "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    implementation "com.android.support:design:$SUPPORT_VERSION"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //工具库utils
+    implementation 'com.blankj:utilcode:1.22.0'
+
+    //时间工具类
+    implementation 'joda-time:joda-time:2.9.9'
+
+    //数据库类库
+    implementation 'org.greenrobot:greendao:3.2.2+'
+    implementation 'org.greenrobot:greendao-generator:3.2.2+'
+    implementation 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.3+'
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    //支持Gson 及 rxjava
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //rxjava rxandroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.13'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:7.0.1'
+
+    //图片加载库
+    implementation 'com.squareup.picasso:picasso:2.5.2+'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
+
+    //有时间选择器和选项选择器
+    implementation 'com.contrarywind:Android-PickerView:4.1.3'
+
+    //tcp包
+    implementation 'io.netty:netty-all:4.1.25.Final'
+
+    //流布局
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    //日历组件
+    implementation(name: 'DatePicker_V1.0.0', ext: 'aar')
+
+    //刷新组件
+//    implementation(name: 'PullToRefresh_V1.0.2', ext: 'aar')
+
+    implementation 'com.github.cheng2016:PullToRefresh:V1.0.8'
+
+    //通用的Android的Loading页面
+//    implementation(name: 'Loadinglayout_V1.0.2', ext: 'aar')
+
+//    implementation 'com.github.czy1121:loadinglayout:1.0.1'
+}

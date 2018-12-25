@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_content_bg"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cheng.refresh.library.ReboundScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/widget_size_10"
+                android:layout_marginTop="@dimen/widget_size_10"
+                android:layout_marginRight="@dimen/widget_size_10"
+                android:background="@drawable/shape_input_edit"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/widget_size_12"
+                android:paddingRight="@dimen/widget_size_12"
+                android:paddingBottom="@dimen/widget_size_60">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <ImageView
+                        android:id="@+id/previous_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/btn_previous" />
+
+                    <TextView
+                        android:id="@+id/indicator_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/widget_size_20"
+                        android:layout_marginRight="@dimen/widget_size_20"
+                        android:gravity="center"
+                        android:text="诊断报告1/1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_16" />
+
+                    <ImageView
+                        android:id="@+id/next_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/btn_next" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/widget_size_186"
+                    android:layout_height="@dimen/widget_size_4"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:background="@color/app_content_bg" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_80"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/head_img"
+                        android:layout_width="@dimen/widget_size_60"
+                        android:layout_height="@dimen/widget_size_60"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/doctor_loginportraits" />
+
+
+                    <TextView
+                        android:id="@+id/nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/widget_size_80"
+                        android:layout_marginTop="@dimen/widget_size_6"
+                        android:gravity="center_vertical"
+                        android:text="婊子李"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_16" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/widget_size_5"
+                        android:layout_marginTop="@dimen/widget_size_7"
+                        android:layout_toRightOf="@+id/nickname"
+                        android:gravity="center_vertical"
+                        android:text="宠物健康专家"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <RatingBar
+                        android:id="@+id/ratingbar"
+                        style="@style/mRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/nickname"
+                        android:layout_alignLeft="@+id/nickname"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:numStars="5"
+                        android:progressTint="@android:color/holo_orange_dark"
+                        android:rating="3"
+                        android:stepSize="1" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_min_size_2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:background="@color/app_content_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:text="诊单号"
+                    android:textColor="@color/disable_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:id="@+id/diagnostic_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_3"
+                    android:text="847362934562"
+                    android:textColor="@color/order_normal_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_5"
+                    android:text="开单时间"
+                    android:textColor="@color/disable_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:id="@+id/diagnostic_create_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_3"
+                    android:text="2018.11.28 15:36"
+                    android:textColor="@color/order_normal_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_5"
+                    android:text="诊断报告"
+                    android:textColor="@color/disable_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:id="@+id/diagnostic_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_3"
+                    android:text="这是已经填写好的具体的诊断报告，字数请以需求定的为准。这是已经填写好的具体的诊断报告，字数请以需求定的为准。这是已经填写好的具体的诊断报告。"
+                    android:textColor="@color/order_normal_text"
+                    android:textSize="@dimen/widget_size_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:layout_marginBottom="@dimen/widget_size_5"
+                    android:text="药品和耗材"
+                    android:textColor="@color/order_normal_text"
+                    android:textSize="@dimen/widget_size_16" />
+
+                <ListView
+                    android:id="@+id/fee_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:divider="@null"
+                    android:listSelector="@android:color/transparent" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小计"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/subtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="¥0.00"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:layout_marginTop="@dimen/widget_size_8"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="诊费"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/cure_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="¥0.00"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="合计"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="¥0.00"
+                        android:textColor="#FFB58B"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="支付方式"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/diagnostic_pay_way"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="线下支付"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/diagnostic_pay_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="支付时间"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/diagnostic_pay_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2018.11.29  20:56"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_size_30"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下次复诊"
+                        android:textColor="@color/disable_text"
+                        android:textSize="@dimen/font_size_14" />
+
+                    <TextView
+                        android:id="@+id/diagnostic_need_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="无需复诊"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+                </RelativeLayout>
+
+
+                <ListView
+                    android:id="@+id/detail_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/widget_size_24"
+                    android:divider="@null"
+                    android:listSelector="@android:color/transparent" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/widget_min_size_3"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:background="@drawable/shape_line_dash"
+                    android:layerType="software" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/plan_shape"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widget_size_60"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/pet_img"
+                            android:layout_width="@dimen/widget_size_60"
+                            android:layout_height="@dimen/widget_size_60"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pet_homepageportraits" />
+
+
+                        <TextView
+                            android:id="@+id/pet_nickname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/widget_size_80"
+                            android:layout_marginTop="@dimen/widget_size_6"
+                            android:gravity="center_vertical"
+                            android:text="铲屎官的宝贝"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_16" />
+
+
+                        <TextView
+                            android:id="@+id/pet_varieties"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pet_nickname"
+                            android:layout_alignLeft="@+id/pet_nickname"
+                            android:layout_marginTop="@dimen/widget_size_10"
+                            android:text="边境牧羊犬"
+                            android:textColor="@color/disable_text"
+                            android:textSize="@dimen/font_size_14" />
+                    </RelativeLayout>
+
+
+                    <com.zhy.view.flowlayout.TagFlowLayout xmlns:zhy="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/flow_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:layout_marginRight="@dimen/widget_size_12"
+                        zhy:max_select="-1" />
+
+
+                    <TextView
+                        android:id="@+id/content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        android:gravity="center_vertical"
+                        android:text="这是已经填写好的具体的宠物疾病症状，字数在五十个字以内。这是已经填写好的具体的宠物疾病症状，字数在五十个字以内。"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_14" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widget_min_size_1"
+                        android:layout_marginLeft="@dimen/widget_size_10"
+                        android:layout_marginTop="@dimen/widget_size_14"
+                        android:layout_marginRight="@dimen/widget_size_10"
+                        android:background="@color/splite_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/widget_size_14"
+                        android:layout_marginBottom="@dimen/widget_size_14"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/widget_size_76"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预约号"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="创建时间"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="联系人"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="联系电话"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/widget_size_40"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="上门地址"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="预约时间"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="出诊费"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="支付时间"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="支付方式"
+                                android:textColor="@color/disable_text"
+                                android:textSize="@dimen/font_size_14" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/order_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预约号"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/create_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="2018.12.03  09:30"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/contact_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="婊子李"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/contact_phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="1388005438"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/widget_size_40"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:lineSpacingExtra="@dimen/widget_size_5"
+                                android:maxLines="2"
+                                android:text="广东省深圳市福田区泰然九路11号海松大厦B座906室"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/reservation_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="2018.12.03  09:30"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="¥168.00"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/pay_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="2018.12.03  09:30"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                            <TextView
+                                android:id="@+id/pay_way"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/widget_size_10"
+                                android:text="微信支付"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.cheng.refresh.library.ReboundScrollView>
+
+        <RelativeLayout
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_50"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_button"
+            android:visibility="visible">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/confirm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="@dimen/widget_size_4"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="复诊开单"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_18"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

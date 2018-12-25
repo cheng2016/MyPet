@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/widget_size_16"
+    android:paddingRight="@dimen/widget_size_16">
+
+    <TextView
+        android:id="@+id/orderNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_10"
+        android:text="预约号：2875948372958473089123"
+        android:textColor="@color/disable_text"
+        android:textSize="@dimen/widget_size_16" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_min_size_1"
+        android:layout_marginTop="@dimen/widget_size_8"
+        android:background="@color/splite_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_8">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="陈独秀"
+            android:textColor="@color/order_normal_text"
+            android:textSize="@dimen/widget_size_16" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icn_call"
+            android:drawablePadding="@dimen/widget_size_3"
+            android:text="边境牧羊犬"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/widget_size_14" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/varieties"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_5"
+        android:layout_marginBottom="@dimen/widget_size_8"
+        android:drawableLeft="@mipmap/icn_pin"
+        android:drawablePadding="@dimen/widget_size_3"
+        android:text="边境牧羊犬"
+        android:textColor="@color/disable_text"
+        android:textSize="@dimen/widget_size_14" />
+
+
+    <com.zhy.view.flowlayout.TagFlowLayout xmlns:zhy="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/flow_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/widget_size_38"
+        zhy:max_select="-1"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_5"
+        android:text="预约时间："
+        android:textColor="@color/disable_text"
+        android:textSize="@dimen/widget_size_14" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_5"
+        android:text="2018.12.03 10:43"
+        android:textColor="@color/order_normal_text"
+        android:textSize="@dimen/widget_size_14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_5"
+        android:text="上门地点："
+        android:textColor="@color/disable_text"
+        android:textSize="@dimen/widget_size_14" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_size_5"
+        android:text="广东省深圳市福田区泰然九路11号海松大厦B座906室"
+        android:textColor="@color/order_normal_text"
+        android:layout_marginBottom="@dimen/widget_size_12"
+        android:textSize="@dimen/widget_size_14" />
+</LinearLayout>

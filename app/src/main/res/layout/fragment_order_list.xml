@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_content_bg"
+    android:orientation="vertical">
+
+    <com.cheng.refresh.library.PullToRefreshListView
+        android:id="@+id/refresh_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/app_content_bg"
+        android:dividerHeight="@dimen/widget_size_8"
+        android:listSelector="@android:color/transparent"
+        android:paddingTop="@dimen/widget_size_8" />
+
+
+    <LinearLayout
+        android:id="@+id/empty_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+<!--        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/empty_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icn_empty_video" />-->
+
+        <TextView
+            android:id="@+id/empty_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/widget_size_8"
+            android:gravity="center_horizontal"
+            android:drawableTop="@mipmap/img_noorder"
+            android:drawablePadding="@dimen/widget_size_16"
+            android:text="暂无订单"
+            android:textColor="#131313"
+            android:textSize="@dimen/font_size_16" />
+    </LinearLayout>
+</FrameLayout>
