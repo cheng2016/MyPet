@@ -39,5 +39,5 @@ public interface PreferenceConstants {
     public final static String NICK_NAME = "nick_name";
     public final static String RATING = "rating";
     public final static String WORK_STATE = "worker_state";
-
+    public final static String HEAD_IMG = "head_img";
 }

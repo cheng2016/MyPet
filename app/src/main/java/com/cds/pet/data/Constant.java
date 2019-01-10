@@ -41,4 +41,6 @@ public interface Constant {
     String ORDER_TYPE_WAITING_ORDER = "2";
     //其他订单
     String ORDER_TYPE_OTHER = "5";
+    //预约成功
+    String ORDER_TYPE_APPOINTMENT_SUCCESS = "7";
 }

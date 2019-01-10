@@ -10,7 +10,6 @@ greendao {
     targetGenDir 'src/main/java'
 }
 
-
 repositories {
     flatDir {
         dirs 'libs'
@@ -29,17 +28,15 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0${getTime()}"
+        versionName "1.0.${getTime()}"
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
-
     signingConfigs {
         release {
             storeFile file('pet.jks')
@@ -48,7 +45,6 @@ android {
             keyPassword 'pet20181212'
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -60,23 +56,28 @@ android {
                         output ->
                             def outputFile = output.outputFile
                             if (outputFile.name.contains("release")) {
-                                outputFileName = new File("../release/","Pet_v${versionName}.apk")
+                                outputFileName = new File("../release/", "Pet_v${versionName}.apk")
                             }
                     }
             }
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     final SUPPORT_VERSION = '28.0.0'
     implementation "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     implementation "com.android.support:design:$SUPPORT_VERSION"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-//    testImplementation 'junit:junit:4.12'
-//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //    testImplementation 'junit:junit:4.12'
+
+    //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //工具库utils
     implementation 'com.blankj:utilcode:1.22.0'
@@ -123,15 +124,28 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
     //日历组件
-    implementation(name: 'DatePicker_V1.0.0', ext: 'aar')
+//    implementation(name: 'DatePicker_V1.0.0', ext: 'aar')
 
     //刷新组件
-//    implementation(name: 'PullToRefresh_V1.0.2', ext: 'aar')
 
+    //    implementation(name: 'PullToRefresh_V1.0.2', ext: 'aar')
     implementation 'com.github.cheng2016:PullToRefresh:V1.0.8'
 
     //通用的Android的Loading页面
-//    implementation(name: 'Loadinglayout_V1.0.2', ext: 'aar')
 
-//    implementation 'com.github.czy1121:loadinglayout:1.0.1'
+    //    implementation(name: 'Loadinglayout_V1.0.2', ext: 'aar')
+
+    //    implementation 'com.github.czy1121:loadinglayout:1.0.1'
+
+    //    implementation 'cn.hutool:hutool-all:4.2.1'
+
+    //    implementation 'com.facebook.android:facebook-login:[4,5)'
+    implementation 'com.github.ome450901:SimpleRatingBar:1.4.2'
+
+    //第三方登录集成
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
 }
+apply plugin: 'com.google.gms.google-services'

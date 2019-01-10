@@ -1,22 +1,29 @@
 package com.cds.pet.module.order.diagnostic;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.cds.pet.R;
 import com.cds.pet.base.BaseActivity;
 import com.cds.pet.data.entity.Diagnostics;
 import com.cds.pet.data.entity.OrderInfo;
+import com.cds.pet.module.order.info.OrderInfoFragment;
 
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 /**
@@ -27,6 +34,8 @@ import butterknife.Bind;
  * 诊断报告详情
  */
 public class DiagnosticReportActivity extends BaseActivity implements View.OnClickListener, DiagnosticReportContract.View {
+    @Bind(R.id.content_container)
+    FrameLayout contentContainer;
     @Bind(R.id.viewpager)
     ViewPager viewPager;
 
@@ -92,6 +101,7 @@ public class DiagnosticReportActivity extends BaseActivity implements View.OnCli
         if (resp != null) {
             List<Diagnostics> list = resp.getDiagnostics();
             if (list != null && list.size() > 0) {
+                viewPager.removeAllViews();
                 viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), new Fragment[list.size()], resp));
                 viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
@@ -106,6 +116,13 @@ public class DiagnosticReportActivity extends BaseActivity implements View.OnCli
                     public void onPageScrollStateChanged(int i) {
                     }
                 });
+            } else {
+                contentContainer.removeAllViews();
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                OrderInfoFragment fragment = OrderInfoFragment.newInstance(resp);
+                ft.replace(R.id.content_container, fragment);
+                ft.commit();
             }
         }
     }
@@ -120,6 +137,13 @@ public class DiagnosticReportActivity extends BaseActivity implements View.OnCli
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            mPresenter.getOrderInfo(orderId, type);
+        }
+    }
 
     public class PagerAdapter extends FragmentPagerAdapter {
 

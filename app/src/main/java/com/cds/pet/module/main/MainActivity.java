@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             @Override
             public void run() {
                 if (mSocketService != null) {
-                    mSocketService.initPushService();
+                    mSocketService.startPushService();
                 }
             }
         }, 300);

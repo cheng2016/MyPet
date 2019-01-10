@@ -103,4 +103,7 @@
     <string name="up_for_cancel">手指上滑，取消发送</string>
     <string name="want_to_cancle">松开手指，取消发送</string>
     <string name="time_too_short">录音时间过短</string>
+
+    <string name="facebook_app_id">959708234237384</string>
+    <string name="fb_login_protocol_scheme">fb959708234237384</string>
 </resources>

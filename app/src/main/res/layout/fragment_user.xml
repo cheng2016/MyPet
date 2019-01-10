@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hedgehog="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_content_bg"
     android:orientation="vertical">
 
     <include layout="@layout/action_bar" />
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/widget_size_10"
         android:background="@drawable/shape_input_edit"
-        android:layout_height="wrap_content" android:orientation="vertical">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,41 +58,84 @@
                 android:textColor="@color/disable_text"
                 android:textSize="@dimen/font_size_14" />
 
+ <!--               <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/ratingbar"
+                    style="@style/mRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nickname"
+                    android:layout_alignLeft="@+id/nickname"
+                    android:layout_marginTop="@dimen/widget_size_10"
+                    android:numStars="5"
+                    android:progressTint="@android:color/holo_orange_dark"
+                    android:rating="3"
+                    android:isIndicator="true"
+                    android:stepSize="1" />-->
 
-            <RatingBar
+            <com.willy.ratingbar.ScaleRatingBar
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/ratingbar"
-                style="@style/mRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nickname"
                 android:layout_alignLeft="@+id/nickname"
                 android:layout_marginTop="@dimen/widget_size_10"
-                android:numStars="5"
-                android:progressTint="@android:color/holo_orange_dark"
-                android:rating="3"
-                android:stepSize="1" />
+                app:srb_numStars="5"
+                app:srb_minimumStars="1"
+                app:srb_rating="2"
+                app:srb_starWidth="@dimen/widget_size_15"
+                app:srb_starHeight="@dimen/widget_size_14"
+                app:srb_starPadding="@dimen/widget_size_2"
+                app:srb_stepSize="0.5"
+                app:srb_isIndicator="false"
+                app:srb_clickable="false"
+                app:srb_scrollable="true"
+                app:srb_clearRatingEnabled="true"
+                app:srb_drawableEmpty="@mipmap/icn_heart"
+                app:srb_drawableFilled="@mipmap/icn_heart_current">
+            </com.willy.ratingbar.ScaleRatingBar>
+<!--
+            <com.hedgehog.ratingbar.RatingBar
+                android:id="@+id/ratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nickname"
+                android:layout_alignLeft="@+id/nickname"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/widget_size_10"
+                hedgehog:clickable="false"
+                hedgehog:halfstart="true"
+                hedgehog:starCount="5"
+                hedgehog:starEmpty="@mipmap/icn_heart_current"
+                hedgehog:starFill="@mipmap/icn_heart_current"
+                hedgehog:starHalf="@mipmap/star_half"
+                hedgehog:starImageHeight="25dp"
+                hedgehog:starImagePadding="5dp"
+                hedgehog:starImageWidth="25dp" />-->
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:background="@color/app_content_bg"
+            android:layout_height="@dimen/widget_size_5"
             android:layout_marginLeft="@dimen/widget_size_16"
             android:layout_marginTop="@dimen/widget_size_10"
             android:layout_marginRight="@dimen/widget_size_16"
-            android:layout_height="@dimen/widget_size_5"/>
+            android:background="@color/app_content_bg" />
 
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/widget_size_48"
+            android:layout_gravity="bottom"
             android:layout_marginLeft="@dimen/widget_size_60"
             android:layout_marginTop="@dimen/widget_size_50"
             android:layout_marginRight="@dimen/widget_size_60"
             android:background="@drawable/shape_logout_button"
             android:text="退出登录"
-            android:layout_gravity="bottom"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_16" />
+
         <Button
             android:id="@+id/stop"
             android:layout_width="match_parent"

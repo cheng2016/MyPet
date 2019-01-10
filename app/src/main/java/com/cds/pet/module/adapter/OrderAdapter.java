@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.cds.pet.R;
 import com.cds.pet.data.entity.Order;
 import com.cds.pet.data.entity.Symptom;
-import com.cds.pet.util.PhoneUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;

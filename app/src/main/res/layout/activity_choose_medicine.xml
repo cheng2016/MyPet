@@ -19,6 +19,7 @@
             android:divider="@color/app_content_bg"
             android:layout_marginTop="@dimen/widget_size_8"
             android:dividerHeight="@dimen/widget_size_8"
+            android:layout_marginBottom="@dimen/widget_size_50"
             android:listSelector="@android:color/transparent"></ListView>
 
 

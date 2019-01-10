@@ -130,15 +130,22 @@ public class SocketService extends Service implements SocketContract {
         unregisterActionReceiver();
     }
 
+    //是否关闭
+    public boolean isClose = false;
+
+    public void startPushService(){
+        isClose = false;
+        initPushService();
+        Logger.w(TAG, "startPushService, Thread: " + Thread.currentThread().getName());
+    }
+
     private EventLoopGroup eventLoopGroup;
 
     private ChannelFuture mChannelFuture;
     //是否连接
     private boolean isConnect = false;
-    //是否关闭
-    private boolean isClose = false;
 
-    public synchronized void initPushService() {
+    private synchronized void initPushService() {
         userId = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.USER_ID, "");
         token = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.ACCESS_TOKEN, "");
         Logger.w(TAG, "initPushService, Thread: " + Thread.currentThread().getName() + " userId：" + userId);
@@ -163,7 +170,7 @@ public class SocketService extends Service implements SocketContract {
                                     ByteBuf delimiter = Unpooled.copiedBuffer(UP_MSG_END_FLAG.getBytes());
                                     pipeline.addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, delimiter));
                                     pipeline.addLast(new IdleStateHandler(0,
-                                            0, 2, TimeUnit.MINUTES));
+                                            0, 1, TimeUnit.MINUTES));
                                     pipeline.addLast("decoder", new StringDecoder());
                                     pipeline.addLast("encoder", new StringEncoder());
                                     pipeline.addLast(new NettyClientHandler());
@@ -180,7 +187,7 @@ public class SocketService extends Service implements SocketContract {
         }
     }
 
-    public synchronized void connect(final Bootstrap bootstrap) {
+    private synchronized void connect(final Bootstrap bootstrap) {
         Logger.w(TAG, "connect is excute!");
         userId = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.USER_ID, "");
         if (NetUtils.isConnected(this) && !TextUtils.isEmpty(userId)) {
@@ -484,7 +491,6 @@ public class SocketService extends Service implements SocketContract {
         Notification notification = builder.build();
         //显示在通知栏
         manager.notify(2, notification);
-
     }
 
     public void checkNofificationPermission(NotificationManager manager) {
@@ -598,7 +604,7 @@ public class SocketService extends Service implements SocketContract {
     private NetworkStateReceiver mNetworkStateReceiver;
 
     public void registerActionReceiver() {
-        Logger.d(TAG, "---------------- registerReceiver----------------");
+        Logger.d(TAG, "---------------- registerReceiver ----------------");
         mNetworkStateReceiver = new NetworkStateReceiver();
         IntentFilter netIntentFilter = new IntentFilter();
         netIntentFilter.addAction(NETWORK_RECEIVER);
@@ -609,10 +615,9 @@ public class SocketService extends Service implements SocketContract {
      * 注销广播；
      */
     public void unregisterActionReceiver() {
-        Logger.d(TAG, "-------------------- unRegisterReceiver------------------");
+        Logger.d(TAG, "-------------------- unRegisterReceiver ------------------");
         unregisterReceiver(mNetworkStateReceiver);
     }
-
 
     public static final String NETWORK_RECEIVER = "android.net.conn.CONNECTIVITY_CHANGE";
 

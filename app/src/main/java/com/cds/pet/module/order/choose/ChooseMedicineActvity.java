@@ -80,12 +80,14 @@ public class ChooseMedicineActvity extends BaseActivity implements View.OnClickL
 
     @OnClick(R.id.confirm)
     public void onViewClicked() {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("feesList", new FeesList(feesList));
-        intent.putExtras(bundle);
-        intent.putExtra("subtotal", sum);
-        setResult(RESULT_OK,intent);
+        if(feesList != null && sum != 0F){
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("feesList", new FeesList(feesList));
+            intent.putExtras(bundle);
+            intent.putExtra("subtotal", sum);
+            setResult(RESULT_OK,intent);
+        }
         finish();
     }
 

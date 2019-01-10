@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,7 +22,10 @@ import com.cds.pet.module.adapter.FeesAdapter;
 import com.cds.pet.module.order.open.OpenOrderActivity;
 import com.cds.pet.util.AppManager;
 import com.cds.pet.util.Utils;
+import com.cds.pet.util.picasso.PicassoCircleTransform;
 import com.cds.pet.view.CustomDialog;
+import com.squareup.picasso.Picasso;
+import com.willy.ratingbar.ScaleRatingBar;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -50,7 +53,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
     @Bind(R.id.nickname)
     TextView nickname;
     @Bind(R.id.ratingbar)
-    RatingBar ratingbar;
+    ScaleRatingBar ratingbar;
     @Bind(R.id.diagnostic_id)
     TextView diagnosticId;
     @Bind(R.id.diagnostic_create_time)
@@ -111,7 +114,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
 
     FeesAdapter adapter;
 
-    OrderInfo resp;
+    OrderInfo orderInfo;
 
     Diagnostics mDiagnostics;
 
@@ -143,17 +146,25 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
     @Override
     protected void initData() {
         new DiagnosticReportPresenter(this);
-        resp = (OrderInfo) getArguments().getSerializable("orderInfo");
+        orderInfo = (OrderInfo) getArguments().getSerializable("orderInfo");
         index = getArguments().getInt("index");
-        reloadData();
+        reloadData(orderInfo);
     }
 
-    void reloadData() {
+    public void reloadData(OrderInfo resp) {
         mDiagnostics = resp.getDiagnostics().get(index);
+        if (!TextUtils.isEmpty(mDiagnostics.getDoctor_head_img())) {
+            Picasso.with(getActivity())
+                    .load(mDiagnostics.getDoctor_head_img())
+                    .error(R.mipmap.doctor_loginportraits)
+                    .transform(new PicassoCircleTransform())
+                    .into(headImg);
+        }
         nickname.setText(mDiagnostics.getDoctor_name());
         ratingbar.setRating(Float.parseFloat(mDiagnostics.getRating()));
 
         diagnosticId.setText(mDiagnostics.getNo());
+        diagnosticPayTime.setText(mDiagnostics.getPay_time());
         diagnosticCreateTime.setText(mDiagnostics.getCreate_time());
         diagnosticReport.setText(mDiagnostics.getResult());
 
@@ -221,18 +232,17 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
             } else if (mDiagnostics.getNeed_review() == 1) {//需要复诊
                 confirmText.setText("复诊开单");
                 diagnosticNeedReview.setText(mDiagnostics.getReview_time());
+                if("5".equals(resp.getState_key())){
+                    confirm.setVisibility(View.GONE);
+                }
             }
-        }
-
-        if ("5".equals(resp.getState_key())) {
-            confirm.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void getOrderInfoSuccess(OrderInfo resp) {
-        this.resp = resp;
-        reloadData();
+        orderInfo = resp;
+        reloadData(resp);
     }
 
     @Override
@@ -244,7 +254,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
     public void confirmReceiptSuccess() {
         ToastUtils.showShort("请求用户支付成功");
         confirm.setVisibility(View.GONE);
-        mPresenter.getOrderInfo(resp.getAppoint_id(), resp.getState());
+        mPresenter.getOrderInfo(orderInfo.getAppoint_id(), orderInfo.getState());
     }
 
     @Override
@@ -266,7 +276,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
                                 .setPositiveButton("是", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        mPresenter.confirmReceipt(resp.getAppoint_id(), mDiagnostics.getId());
+                                        mPresenter.confirmReceipt(orderInfo.getAppoint_id(), mDiagnostics.getId());
                                     }
                                 });
                     }
@@ -276,9 +286,11 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
                 } else {
                     Intent intent = new Intent();
                     intent.setClass(getActivity(), OpenOrderActivity.class);
-                    intent.putExtra("orderId", resp.getAppoint_id());
-                    startActivityForResult(intent, 101);
+                    intent.putExtra("orderId", orderInfo.getAppoint_id());
+                    getActivity().startActivityForResult(intent, 101);
                 }
+                break;
+            default:
                 break;
         }
     }

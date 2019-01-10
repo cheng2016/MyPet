@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
  * @CreateDate: 2018/12/4 11:02
  * @Version: 3.0.0
  */
-public class OrderListPresenter implements OrderListContract.Presenter{
+public class OrderListPresenter implements OrderListContract.Presenter {
     public final static String TAG = "OrderListPresenter";
     private OrderListContract.View view;
     private HttpApi mHttpApi;
@@ -48,9 +48,9 @@ public class OrderListPresenter implements OrderListContract.Presenter{
     }
 
     @Override
-    public void getOrderList(String type,int pageNo) {
-        String userId = PreferenceUtils.getPrefString(App.getInstance(),PreferenceConstants.USER_ID,"");
-        OrderListReq req = new OrderListReq(userId,type,pageNo);
+    public void getOrderList(String type, int pageNo) {
+        String userId = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.USER_ID, "");
+        OrderListReq req = new OrderListReq(userId, type, pageNo);
         mHttpApi.getOrderList(new Gson().toJson(req))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

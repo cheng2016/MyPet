@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/widget_size_21"
                 android:layout_marginTop="@dimen/widget_size_16"
-                android:text="预约号"
+                android:text="转交说明"
                 android:textColor="@color/disable_text"
                 android:textSize="@dimen/font_size_16" />
 

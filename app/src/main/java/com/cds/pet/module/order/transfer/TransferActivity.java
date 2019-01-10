@@ -76,12 +76,13 @@ public class TransferActivity extends BaseActivity implements View.OnClickListen
 
     @OnClick(R.id.confirm)
     public void onViewClicked() {
-        showProgressDilog();
         String content = editText.getText().toString();
         if(TextUtils.isEmpty(content)) {
             ToastUtils.showShort("请填写转单说明");
         }else {
+            showProgressDilog();
             mPresenter.transfer(orderId, content);
+            confirm.setClickable(false);
         }
     }
 
@@ -105,6 +106,7 @@ public class TransferActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void transferFailed() {
         hideProgressDilog();
+        confirm.setClickable(true);
     }
 
     @Override

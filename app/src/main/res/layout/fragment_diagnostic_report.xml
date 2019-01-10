@@ -110,7 +110,7 @@
                         android:textColor="@color/disable_text"
                         android:textSize="@dimen/font_size_14" />
 
-                    <RatingBar
+<!--                    <RatingBar
                         android:id="@+id/ratingbar"
                         style="@style/mRatingBar"
                         android:layout_width="wrap_content"
@@ -121,7 +121,30 @@
                         android:numStars="5"
                         android:progressTint="@android:color/holo_orange_dark"
                         android:rating="3"
-                        android:stepSize="1" />
+                        android:stepSize="1" />-->
+
+                    <com.willy.ratingbar.ScaleRatingBar
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/ratingbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/nickname"
+                        android:layout_alignLeft="@+id/nickname"
+                        android:layout_marginTop="@dimen/widget_size_10"
+                        app:srb_numStars="5"
+                        app:srb_minimumStars="1"
+                        app:srb_rating="2"
+                        app:srb_starWidth="@dimen/widget_size_15"
+                        app:srb_starHeight="@dimen/widget_size_14"
+                        app:srb_starPadding="@dimen/widget_size_2"
+                        app:srb_stepSize="0.5"
+                        app:srb_isIndicator="false"
+                        app:srb_clickable="false"
+                        app:srb_scrollable="true"
+                        app:srb_clearRatingEnabled="true"
+                        app:srb_drawableEmpty="@mipmap/icn_heart"
+                        app:srb_drawableFilled="@mipmap/icn_heart_current">
+                    </com.willy.ratingbar.ScaleRatingBar>
                 </RelativeLayout>
 
                 <View
@@ -307,7 +330,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2018.11.29  20:56"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="@dimen/font_size_14" />
                 </RelativeLayout>

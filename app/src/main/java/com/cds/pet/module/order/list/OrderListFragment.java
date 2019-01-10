@@ -172,9 +172,7 @@ public class OrderListFragment extends BaseFragment implements PullToRefreshBase
         if (index == 2 && ("4".equals(adapter.getDataList().get(position).getState_key())
                 || "5".equals(adapter.getDataList().get(position).getState_key()))) {
             intent.setClass(getActivity(), DiagnosticReportActivity.class);
-        } else if ("2".equals(adapter.getDataList().get(position).getState_key())
-                || "3".equals(adapter.getDataList().get(position).getState_key())
-                || "6".equals(adapter.getDataList().get(position).getState_key())) {
+        } else {
             intent.setClass(getActivity(), OrderInfoActivity.class);
         }
         intent.putExtra("type", type);

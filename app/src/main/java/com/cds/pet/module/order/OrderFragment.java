@@ -5,8 +5,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.RatingBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cds.pet.App;
@@ -16,6 +17,9 @@ import com.cds.pet.data.entity.DoctorInfo;
 import com.cds.pet.module.order.list.OrderListFragment;
 import com.cds.pet.util.PreferenceConstants;
 import com.cds.pet.util.PreferenceUtils;
+import com.cds.pet.util.picasso.PicassoCircleTransform;
+import com.squareup.picasso.Picasso;
+import com.willy.ratingbar.ScaleRatingBar;
 
 import butterknife.Bind;
 
@@ -34,7 +38,9 @@ public class OrderFragment extends BaseFragment implements OrderContract.View {
     @Bind(R.id.job)
     TextView jobTv;
     @Bind(R.id.ratingbar)
-    RatingBar ratingbar;
+    ScaleRatingBar ratingbar;
+    @Bind(R.id.head_img)
+    ImageView headImg;
 
     OrderContract.Presenter mPresenter;
 
@@ -58,7 +64,7 @@ public class OrderFragment extends BaseFragment implements OrderContract.View {
         new OrderPresenter(this);
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             Fragment[] mFragments = new Fragment[3];
-            String[] titles = new String[]{"待上门订单", "待接订单", "其他"};
+            String[] titles = new String[]{"待上门订单", "已派订单", "其他"};
 
             @Override
             public int getCount() {
@@ -126,5 +132,13 @@ public class OrderFragment extends BaseFragment implements OrderContract.View {
         PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.NICK_NAME,info.getName());
         PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.RATING,info.getRating());
         PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.WORK_STATE,info.getWorker_state());
+        PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.HEAD_IMG,info.getHead_img());
+        if (!TextUtils.isEmpty(info.getHead_img())) {
+            Picasso.with(getActivity())
+                    .load(info.getHead_img())
+                    .error(R.mipmap.doctor_loginportraits)
+                    .transform(new PicassoCircleTransform())
+                    .into(headImg);
+        }
     }
 }

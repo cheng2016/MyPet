@@ -149,20 +149,21 @@ public class MessageFragment extends BaseFragment implements PullToRefreshBase.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent();
-        if("10".equals(adapter.getDataList().get(position).getMsgType())
-                ||"12".equals(adapter.getDataList().get(position).getMsgType())){
+        if ("10".equals(adapter.getDataList().get(position).getMsgType())
+                || "12".equals(adapter.getDataList().get(position).getMsgType())) {
             intent.setClass(getActivity(), OrderInfoActivity.class);
-            if("10".equals(adapter.getDataList().get(position).getMsgType())){
+            if ("10".equals(adapter.getDataList().get(position).getMsgType())) {
                 intent.putExtra("type", ORDER_TYPE_WAITING_ORDER);
-            }else {
+            } else {
                 intent.putExtra("type", ORDER_TYPE_OTHER);
             }
-        }else if("11".equals(adapter.getDataList().get(position).getMsgType())){
+        } else if ("11".equals(adapter.getDataList().get(position).getMsgType())) {
             intent.setClass(getActivity(), DiagnosticReportActivity.class);
             intent.putExtra("type", ORDER_TYPE_OTHER);
         }
+        intent.setClass(getActivity(), DiagnosticReportActivity.class);
         intent.putExtra("orderId", adapter.getDataList().get(position).getOrderId());
-        startActivity (intent);
+        startActivity(intent);
     }
 
     @Override

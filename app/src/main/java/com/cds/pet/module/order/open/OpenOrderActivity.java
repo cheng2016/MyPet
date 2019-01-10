@@ -203,6 +203,11 @@ public class OpenOrderActivity extends BaseActivity implements View.OnClickListe
                     ToastUtils.showShort("请输入诊断报告");
                     return;
                 }
+                if(TextUtils.isEmpty(consultationFeeEdit.getText().toString())){
+                    ToastUtils.showShort("请输入费用金额");
+                    return;
+                }
+
                 OpenOrderReq req = new OpenOrderReq();
                 req.setUser_id(userId);
                 req.setAppoint_id(orderId);

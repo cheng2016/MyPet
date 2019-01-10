@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/widget_size_118"
         android:layout_marginLeft="@dimen/widget_size_60"
+        android:layout_marginTop="@dimen/widget_size_118"
         android:layout_marginRight="@dimen/widget_size_60"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -96,5 +96,18 @@
             android:text="登录"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_16" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </FrameLayout>

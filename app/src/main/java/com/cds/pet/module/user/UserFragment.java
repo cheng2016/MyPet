@@ -3,9 +3,10 @@ package com.cds.pet.module.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RatingBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -13,13 +14,14 @@ import com.cds.pet.App;
 import com.cds.pet.R;
 import com.cds.pet.base.BaseFragment;
 import com.cds.pet.module.login.LoginActivity;
-import com.cds.pet.util.AppManager;
 import com.cds.pet.util.PreferenceConstants;
 import com.cds.pet.util.PreferenceUtils;
+import com.cds.pet.util.picasso.PicassoCircleTransform;
 import com.cds.pet.view.CustomDialog;
+import com.squareup.picasso.Picasso;
+import com.willy.ratingbar.ScaleRatingBar;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * @Author: chengzj
@@ -30,9 +32,11 @@ public class UserFragment extends BaseFragment implements View.OnClickListener, 
     @Bind(R.id.nickname)
     TextView nicknameTv;
     @Bind(R.id.ratingbar)
-    RatingBar ratingbar;
+    ScaleRatingBar ratingbar;
     @Bind(R.id.stop)
     Button stopTv;
+    @Bind(R.id.head_img)
+    ImageView headImg;
 
     public static final String UNWORKING = "0";
 
@@ -74,6 +78,14 @@ public class UserFragment extends BaseFragment implements View.OnClickListener, 
         String rating = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.RATING, "");
         nicknameTv.setText(nickName);
         ratingbar.setRating(Float.parseFloat(rating));
+        String headImgStr = PreferenceUtils.getPrefString(App.getInstance(), PreferenceConstants.HEAD_IMG, "");
+        if (!TextUtils.isEmpty(headImgStr)) {
+            Picasso.with(getActivity())
+                    .load(headImgStr)
+                    .error(R.mipmap.doctor_loginportraits)
+                    .transform(new PicassoCircleTransform())
+                    .into(headImg);
+        }
     }
 
     @Override
@@ -86,45 +98,21 @@ public class UserFragment extends BaseFragment implements View.OnClickListener, 
                     public void run() {
                         hideProgressDilog();
                         PreferenceUtils.setPrefString(App.getInstance(), PreferenceConstants.USER_PASSWORD, "");
+                        PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.NICK_NAME,"");
+                        PreferenceUtils.setPrefString(App.getInstance(),PreferenceConstants.RATING,"");
+                        PreferenceUtils.setPrefString(App.getInstance(), PreferenceConstants.HEAD_IMG, "");
                         startActivity(new Intent().setClass(getActivity(), LoginActivity.class));
                         getActivity().finish();
                     }
                 }, 1600);
                 break;
             case R.id.stop:
- /*               if (WORKING.equals(work_state)) {
-                    if (customDialog == null) {
-                        customDialog = new CustomDialog(AppManager.getInstance().getTopActivity())
-                                .setTitle("确认暂停接单吗？")
-                                .setMessage("确认后，系统将不再派发新的预约订单，请妥当处理好已派发的预约。")
-                                .setPositiveButton("是", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        mPresenter.updateWorkState(UNWORKING);
-                                    }
-                                });
-                    }
-                } else {
-                    if (customDialog == null) {
-                        customDialog = new CustomDialog(AppManager.getInstance().getTopActivity())
-                                .setTitle("确认恢复接单吗？")
-                                .setMessage("确认后，系统将会恢复派发新的预约订单。")
-                                .setPositiveButton("是", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        mPresenter.updateWorkState(WORKING);
-                                    }
-                                });
-                    }
-                }*/
-
-
                 if (customDialog == null) {
                     customDialog = new CustomDialog(getActivity());
                 }
                 customDialog.setTitle(WORKING.equals(work_state) ? "确认暂停接单吗？" : "确认恢复接单吗？")
                         .setMessage(WORKING.equals(work_state) ? "确认后，系统将不再派发新的预约订单，请妥当处理好已派发的预约。" : "确认后，系统将会恢复派发新的预约订单。")
-                        .setPositiveButton("是", new View.OnClickListener() {
+                        .setPositiveButton("确认", getResources().getColor(R.color.theme_color), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if (WORKING.equals(work_state)) {

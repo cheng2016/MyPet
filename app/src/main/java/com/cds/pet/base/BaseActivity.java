@@ -51,6 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         TAG = this.getClass().getSimpleName();
+        Logger.d(TAG,"onCreate");
         super.onCreate(savedInstanceState);
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -140,6 +141,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Logger.d(TAG,"onDestroy");
         ButterKnife.unbind(this);
         //解绑服务
         unbindService(mServiceConnection);
