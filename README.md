@@ -1,5 +1,5 @@
 # MyPet
-一个宠物类原型的app
+一个Pet原型的app
 
 
 
