@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
@@ -101,8 +102,7 @@ public class DiagnosticReportActivity extends BaseActivity implements View.OnCli
         if (resp != null) {
             List<Diagnostics> list = resp.getDiagnostics();
             if (list != null && list.size() > 0) {
-                viewPager.removeAllViews();
-                viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), new Fragment[list.size()], resp));
+                viewPager.setAdapter(new PagerStateAdapter(getSupportFragmentManager(), new Fragment[list.size()], resp));
                 viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
                     public void onPageScrolled(int i, float v, int i1) {
@@ -145,13 +145,12 @@ public class DiagnosticReportActivity extends BaseActivity implements View.OnCli
         }
     }
 
-    public class PagerAdapter extends FragmentPagerAdapter {
-
+    public class PagerStateAdapter extends FragmentStatePagerAdapter {
         private Fragment[] mFragments;
 
         private OrderInfo orderInfo;
 
-        public PagerAdapter(FragmentManager fm, Fragment[] fragments, OrderInfo orderInfo) {
+        public PagerStateAdapter(FragmentManager fm, Fragment[] fragments, OrderInfo orderInfo) {
             super(fm);
             this.mFragments = fragments;
             this.orderInfo = orderInfo;

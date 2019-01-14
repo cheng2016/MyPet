@@ -54,8 +54,8 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
     TextView nickname;
     @Bind(R.id.ratingbar)
     ScaleRatingBar ratingbar;
-    @Bind(R.id.diagnostic_id)
-    TextView diagnosticId;
+    @Bind(R.id.diagnostic_no)
+    TextView diagnosticNo;
     @Bind(R.id.diagnostic_create_time)
     TextView diagnosticCreateTime;
     @Bind(R.id.diagnostic_report)
@@ -163,7 +163,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
         nickname.setText(mDiagnostics.getDoctor_name());
         ratingbar.setRating(Float.parseFloat(mDiagnostics.getRating()));
 
-        diagnosticId.setText(mDiagnostics.getNo());
+        diagnosticNo.setText(mDiagnostics.getNo());
         diagnosticPayTime.setText(mDiagnostics.getPay_time());
         diagnosticCreateTime.setText(mDiagnostics.getCreate_time());
         diagnosticReport.setText(mDiagnostics.getResult());
@@ -181,7 +181,7 @@ public class DiagnosticReportFragment extends BaseFragment implements Diagnostic
 
         petNickname.setText(resp.getPet_nickname());
         petVarieties.setText(resp.getPet_varieties());
-        orderNo.setText(resp.getAppoint_id());
+        orderNo.setText(resp.getAppoint_no());
         content.setText(resp.getSymptom_desc());
         createTime.setText(resp.getCreate_time());
         contactName.setText(resp.getContact_name());
